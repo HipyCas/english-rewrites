@@ -144,7 +144,7 @@ const phrases = [
   {
     phrase: "The children stayed at home because it was raining",
     starts: "As",
-    rewrite: "As it was raining outside, the children stayed home",
+    rewrite: "As it was raining, the children stayed at home",
     _type: "as",
   },
   {
