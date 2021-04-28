@@ -56,7 +56,7 @@ function newPhrase() {
 
   phrase.innerText = phrases[index].phrase;
   rewrite.value =
-    typeof phrase[index].starts === "undefined"
+    typeof phrases[index].starts === "undefined"
       ? ""
       : phrases[index].starts + " ";
   console.log(">>> Type: " + phrases[index]._type);
