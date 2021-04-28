@@ -157,4 +157,60 @@ const phrases = [
     starts: "Sharon stopped",
     rewrite: "Sharon stopped eating junk food last May",
   },
+  {
+    phrase: "The teacher glued the pieces of the broken toy",
+    starts: "The pieces",
+    rewrite: "The pieces of the broken toy were glued by the teacher",
+    _type: "passive",
+  },
+  {
+    phrase: "Albert's drawing isn't as good as Gerard's",
+    starts: "Gerard's drawing",
+    rewrite: "Gerard's drawing is better than Albert's",
+    _type: "comparative",
+  },
+  {
+    phrase: '"Why don\'t we play computer games?" said Michael',
+    starts: "Michael suggested",
+    rewrite: "Michael suggested playing computer games",
+    _type: "reported speech",
+  },
+  {
+    phrase: 'She said: "Are you coming to the party on Friday?"',
+    starts: "She asked him",
+    rewrite: "She asked him if he was coming to the party on Friday",
+    _type: "reported speech",
+  },
+  {
+    phrase: "They came to live in New York two years ago",
+    starts: "They have",
+    rewrite: "They have been living in New York for two years",
+  },
+  {
+    phrase: "The fireman managed to rescue the child from the burning house",
+    starts: "The fireman was",
+    rewrite: "The fireman was able to rescue the child from the burning house",
+    _type: "modal",
+  },
+  {
+    phrase: "She's getting someone to mend her windows",
+    starts: "She's having",
+    rewrite: "She's having her windows mended",
+    _type: "causative",
+  },
+  {
+    phrase: "The boy became my boyfriend, I met him on Minds",
+    rewrite: "The boy, I met on Minds, became my boyfriend",
+    _type: "relative",
+  },
+  {
+    phrase: "I can't wait until summer, I can go surfing then",
+    rewrite: "I can't wait until summer when I can go surfing",
+    _type: "relative",
+  },
+  {
+    phrase: "The place was quiet, he lived there",
+    rewrite: "The place, were he lived, was quiet",
+    _type: "relative",
+  },
 ];
