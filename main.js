@@ -55,7 +55,10 @@ function newPhrase() {
   console.log(">> Loading phrase " + index);
 
   phrase.innerText = phrases[index].phrase;
-  rewrite.value = phrases[index].starts + " ";
+  rewrite.value =
+    typeof phrase[index].starts === "undefined"
+      ? ""
+      : phrases[index].starts + " ";
   console.log(">>> Type: " + phrases[index]._type);
   help.innerText =
     typeof phrases[index]._type === "undefined"
