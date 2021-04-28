@@ -36,6 +36,8 @@
   --silver: #dddddd;
   --gray: #aaaaaa;
   --black: #111111;
+
+  --drop-icon: " \25BC";
 }
 
 * {
@@ -54,11 +56,13 @@ body {
   width: 100vw;
   text-align: center;
   background-color: snow;
+  z-index: 0;
 }
 
 #phrase {
   font-size: 48px;
   font-weight: bold;
+  z-index: 0;
 }
 
 input {
@@ -121,4 +125,43 @@ hr {
   position: fixed;
   bottom: 0;
   margin-bottom: 0.1em;
+}
+
+#drop-toggle {
+  background-color: transparent;
+  border-style: none;
+  border-bottom: 1px solid var(--black);
+  margin-bottom: 0.75em;
+}
+
+#drop-toggle::after {
+  content: var(--drop-icon);
+}
+
+#dropdown {
+  display: none;
+  max-height: 100000px;
+  z-index: 10; /* not working */
+  overflow: hidden;
+  background-color: transparent;
+  border: 1px solid var(--black);
+  width: 30%;
+  margin: 0 auto;
+  padding-top: 0.25em;
+}
+
+#dropdown div {
+  margin-bottom: 0.25em;
+  padding: 0.25em;
+}
+
+#dropdown div:hover {
+  background-color: white;
+  font-weight: bold;
+}
+
+#dropdown div[selected="true"] {
+  font-weight: bold;
+  font-style: italic;
+  background-color: white;
 }
