@@ -5,3 +5,5 @@
 - Accept get/have variations for causative
 
 - Regex search/filter
+
+- Add filter by source: exam, teacher or selectividad.
