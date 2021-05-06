@@ -1,17 +1,20 @@
-console.log("> Main script started execution");
-
+//* CONSTANTS
+//* CSS Colors
 const RED = "var(--red)";
 const GREEN = "var(--green)";
 const BLACK = "var(--black)";
 const GRAY = "var(--gray)";
 const PURPLE = "var(--purple)";
 
+//* Icons
 const ARROW_DOWN = " \\25BC";
 const ARROW_UP = " \\25B2";
 
+//* CSS toggle styles
 const OPENED_DROP_TOGGLE = '#drop-toggle::after{content:"' + ARROW_UP + '";}';
 const CLOSED_DROP_TOGGLE = '#drop-toggle::after{content:"' + ARROW_DOWN + '";}';
 
+//* HTML Elements
 const form = document.getElementById("form");
 const phrase = document.getElementById("phrase");
 const rewrite = document.getElementById("rewrite");
@@ -20,32 +23,44 @@ const dropdown_toggle = document.getElementById("drop-toggle");
 const dropdown = document.getElementById("dropdown");
 const dropdown_items = document.getElementsByClassName("drop-item");
 
+//* Root selector
 const root = document.querySelector(":root");
 
-let filtered_phrases = phrases;
-let type = "all";
+//* GLOBAL VARIABLES
+let filtered_phrases = phrases; // A clone of the phrases data array that can be filtered an played with
+let type = "all"; // Type of phrase selected
 
-let index = 0;
-let done = [];
-let last = "";
+let index = 0; // Index of phrase in use
+let done = []; // Record of done phrases via their index
+let last = ""; // Index of the last phrase done
+// TODO Change last to undefined or null and perform a check?
 
+//* Form/Phrase submission handler
 form.onsubmit = function (event) {
-  event.preventDefault();
+  event.preventDefault(); // Prevent page reload
 
+  // Skip phrase if starts by `#!`
+  // TODO Instead of throwing a new phrase directly, which causes some issues with correction, set the input to the rewrite
+  // ! The problem is that it triggers the next else clause
   if (rewrite.value.charAt(0) == "#" && rewrite.value.charAt(1) == "!")
     newPhrase();
 
+  // Case phrase (in lowercase) matches
   if (
     filtered_phrases[index].rewrite.toLowerCase() == rewrite.value.toLowerCase()
   ) {
+    // Set to success styles
     rewrite.style.color = GREEN;
     help.style.color = GREEN;
     help.innerText = "Correct!";
 
+    // Reset styles to default
     rewrite.style.color = GRAY;
     help.style.color = PURPLE;
-    help.style.color = newPhrase();
-  } else {
+    help.style.color = newPhrase(); // ? What is going on here? How can this be working? Like, shouldn't it be setting the color to void/undefined???
+  }
+  // Case phrase does not match: Get where the error happened and turn to red
+  else {
     rewrite.style.color = RED;
 
     help.innerText = getWhereError();
@@ -54,25 +69,30 @@ form.onsubmit = function (event) {
   return false; // No form reload
 };
 
+//* Generate and assign a new phrase
 function newPhrase() {
-  last = index;
+  last = index; // store the index inside last
 
   if (done.length == filtered_phrases.length) {
     // Reset done filtered_phrases list if all done
     done = [];
   }
 
+  // Get a new random index that is not yet done
   do {
     index = Math.floor(Math.random() * filtered_phrases.length);
   } while (index in done || last == index);
   done.push(index);
 
+  // Set the phrase text to the database phrase
   phrase.innerText = filtered_phrases[index].phrase;
+  // Check if there is a phrase starting piece (`starts` field) and se the input to it plus a space if there is
   rewrite.value =
     typeof filtered_phrases[index].starts === "undefined"
       ? ""
       : filtered_phrases[index].starts + " ";
-  console.log(">>> Type: " + filtered_phrases[index]._type);
+  // Set help to phrase count over total and type if defined: `(<done>/<total>) <type_if_has>`
+  // TODO The phrase counts is repeated, can add the ternary operator just after the (n/N)
   help.innerText =
     typeof filtered_phrases[index]._type === "undefined"
       ? "(Phrase " + done.length + "/" + filtered_phrases.length + ")"
@@ -89,49 +109,53 @@ function newPhrase() {
           );
 }
 
+//* Get a text indicating where the error is
 function getWhereError() {
+  // Loop over the smaller of the rewrites (correct or input) to ensure that there is no index out of bounds exception
   for (
     let i = 0;
     i < Math.min(rewrite.value.length, filtered_phrases[index].rewrite.length);
     i++
   ) {
+    // Check if the current character does not match, and return that then
+    // TODO Add .toLowerCase() for each character, to ensure that it is not checking for capitalization
     if (rewrite.value.charAt(i) != filtered_phrases[index].rewrite.charAt(i)) {
       return "First wrong character is letter number " + i;
     }
   }
+  // If there is no error, this was definitely called because phrases don't match, so check length as last option
   return rewrite.value.length < filtered_phrases[index].rewrite.length
     ? "The phrase is good so far, keep writing"
     : "Your phrase is longer than the correct one";
 }
 
+//* Toggle the type selection dropdown
 function toggleDropdown() {
-  console.log("Thats not working : " + dropdown.style.display);
-  //if (dropdown.style.display === "") dropdown.style.display = "none";
+  // Case dropdown is collapsed
   if (dropdown.style.display === "none" || dropdown.style.display === "") {
-    console.log("Changing size");
-    dropdown.style.display = "inherit";
-    console.log(
-      "Property is " +
-        dropdown.style.getPropertyValue("--drop-icon") +
-        ", to be changed to " +
-        ARROW_UP
-    );
-    root.style.setProperty("--drop-icon", ARROW_UP);
+    dropdown.style.display = "inherit"; // Update dropdown display property to parent's/default
+    root.style.setProperty("--drop-icon", ARROW_UP); // Set dropdown icon CSS variable
+    //! I believe the above property setting was not actually changing anything, so maybe I could simply delete it
 
+    // TODO Change this querySelector to a global property
+    // TODO Change query to a more specific one, not just a general style tag
     let styleElem = document.querySelector("style");
-    styleElem.innerHTML = OPENED_DROP_TOGGLE;
-  } else {
+    styleElem.innerHTML = OPENED_DROP_TOGGLE; // Set the
+  }
+  // Case dropdown is open
+  else {
     dropdown.style.display = "none";
-    console.log(
-      "Property is " + dropdown.style.getPropertyValue("--drop-icon")
-    );
     //root.style.setProperty("--drop-icon", ARROW_DOWN);
+    // TODO See, it is not useful
 
+    // TODO Same as above
     let styleElem = document.querySelector("style");
     styleElem.innerHTML = CLOSED_DROP_TOGGLE;
   }
 }
 
+// Set the dropdown toggle onclick event to the toggle function
+// TODO Instead of this, set the function as an anonymous one directly here, like for the form submit
 dropdown_toggle.onclick = toggleDropdown;
 
 /**
@@ -140,43 +164,51 @@ dropdown_toggle.onclick = toggleDropdown;
  * @returns {any[]}
  */
 function filterPhrasesByType(_type) {
-  toReturn = [];
+  toReturn = []; // Empty array where the phrases will be
   if (_type == "all") return phrases;
   for (let i = 0; i < phrases.length; i++) {
-    if (typeof phrases[i]._type === "undefined") continue;
+    // TODO Change this (and all other) undefined type check to `phrases[i]._type === undefined`, as Mozilla says it is better
+    if (typeof phrases[i]._type === "undefined") continue; // Skip phrase if it doesn't have a type defined
     if (_type.includes("/")) {
-      let types = _type.split("/");
+      // If the type is multiple, like As/Unless:
+      let types = _type.split("/"); // Split to check for both
       for (let j = 0; j < types.length; j++) {
+        // Loop over the different types specified
         if (
           types[j] === "as" &&
           phrases[i]._type.toLowerCase().includes("passive")
         )
+          // This ensures that `passive` is not actually registered when setting type to `as`, because `passive` includes an `as` inside its name
           continue;
         if (phrases[i]._type.toLowerCase().includes(types[j]))
+          // Check if the phrase type includes the type and if it does push it to the return array
           toReturn.push(phrases[i]);
       }
     }
     if (phrases[i]._type.toLowerCase().includes(_type))
+      // You may wonder why include and not ===, well, `formal relative` should be included when selecting `relative`
       toReturn.push(phrases[i]);
   }
-  return toReturn;
+  return toReturn; // Return the new composed array
 }
 
 function selectType() {
+  // Deselect all options (in CSS means) before setting others
   for (let i = 0; i < dropdown_items.length; i++)
     dropdown_items[i].setAttribute("selected", "false");
-  this.setAttribute("selected", "true");
 
-  type = this.innerHTML.toLowerCase();
-  filtered_phrases = filterPhrasesByType(type);
-  done = [];
-  newPhrase();
+  type = this.innerHTML.toLowerCase(); // Get the selected name, which is the same as their inner text
+  filtered_phrases = filterPhrasesByType(type); // Update phrases
+  done = []; // Reset the phrases done as we are changing the type, we could already have done all of this type and neither we care about the other ones done
+  newPhrase(); // Generate a new phrase according to the type
 }
 
+// Set the select type action for all dropdown items
 for (let i = 0; i < dropdown_items.length; i++) {
   dropdown_items[i].onclick = selectType;
 }
 
+// Select the first type, which is `all`
 dropdown_items[0].setAttribute("selected", "true");
 
-newPhrase();
+newPhrase(); //* Generate a first phrase
