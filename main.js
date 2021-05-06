@@ -123,7 +123,10 @@ function getWhereError() {
   ) {
     // Check if the current character does not match, and return that then
     // TODO Add .toLowerCase() for each character, to ensure that it is not checking for capitalization
-    if (rewrite.value.charAt(i) != filtered_phrases[index].rewrite.charAt(i)) {
+    if (
+      rewrite.value.charAt(i).toLowerCase() !=
+      filtered_phrases[index].rewrite.charAt(i).toLowerCase()
+    ) {
       return "First wrong character is letter number " + i;
     }
   }
