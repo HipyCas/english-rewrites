@@ -110,6 +110,10 @@ function newPhrase() {
 }
 
 //* Get a text indicating where the error is
+/**
+ * Get a text indicating where the error is
+ * @returns {string} The string explaining the error
+ */
 function getWhereError() {
   // Loop over the smaller of the rewrites (correct or input) to ensure that there is no index out of bounds exception
   for (
@@ -156,12 +160,14 @@ function toggleDropdown() {
 
 // Set the dropdown toggle onclick event to the toggle function
 // TODO Instead of this, set the function as an anonymous one directly here, like for the form submit
+// ? Maybe keep it this way? Maybe you will need it to programatically open some day
 dropdown_toggle.onclick = toggleDropdown;
 
+//* Return the phrases filtered by the type
 /**
- *
+ * Return the phrases filtered by the type
  * @param {string} _type
- * @returns {any[]}
+ * @+returns {any[]}
  */
 function filterPhrasesByType(_type) {
   toReturn = []; // Empty array where the phrases will be
