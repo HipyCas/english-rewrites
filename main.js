@@ -47,7 +47,8 @@ form.onsubmit = function (event) {
 
   // Case phrase (in lowercase) matches
   if (
-    filtered_phrases[index].rewrite.toLowerCase() == rewrite.value.toLowerCase()
+    filtered_phrases[index].rewrite.replace(/,/g, "").toLowerCase() ==
+    rewrite.value.replace(/,/g, "").toLowerCase()
   ) {
     // Set to success styles
     rewrite.style.color = GREEN;
