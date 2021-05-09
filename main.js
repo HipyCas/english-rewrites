@@ -195,8 +195,13 @@ function filterPhrasesByType(_type) {
           toReturn.push(phrases[i]);
       }
     }
-    if (phrases[i]._type.toLowerCase().includes(_type))
+    if (
+      phrases[i]._type.toLowerCase().includes(_type) ||
+      phrases[i].source.toLowerCase().includes(_type)
+    )
       // You may wonder why include and not ===, well, `formal relative` should be included when selecting `relative`
+      // The source.includes() is used for choosing the source of the phrases, like 'exam'
+      // TODO Better implementation of source selection, like 'Source: exam' in the popup, instead of just 'exam'
       toReturn.push(phrases[i]);
   }
   return toReturn; // Return the new composed array
