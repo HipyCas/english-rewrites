@@ -196,8 +196,8 @@ function filterPhrasesByType(_type) {
       }
     }
     if (
-      phrases[i]._type.toLowerCase().includes(_type) ||
-      phrases[i].source.toLowerCase().includes(_type)
+      phrases[i]._type?.toLowerCase().includes(_type) ||
+      phrases[i].source?.toLowerCase().includes(_type)
     )
       // You may wonder why include and not ===, well, `formal relative` should be included when selecting `relative`
       // The source.includes() is used for choosing the source of the phrases, like 'exam'
@@ -211,8 +211,9 @@ function selectType() {
   // Deselect all options (in CSS means) before setting others
   for (let i = 0; i < dropdown_items.length; i++)
     dropdown_items[i].setAttribute('selected', 'false');
+  this.setAttribute('selected', 'true');
 
-  type = this.innerHTML.toLowerCase(); // Get the selected name, which is the same as their inner text
+  type = this.innerText.toLowerCase(); // Get the selected name, which is the same as their inner text
   filtered_phrases = filterPhrasesByType(type); // Update phrases
   done = []; // Reset the phrases done as we are changing the type, we could already have done all of this type and neither we care about the other ones done
   newPhrase(); // Generate a new phrase according to the type
