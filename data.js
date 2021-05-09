@@ -329,4 +329,34 @@ const phrases = [
     _type: 'conditional',
     source: 'exam',
   },
+  {
+    phrase: "I am upset the doctor won't see me sooner",
+    starts: 'If only',
+    rewrite: 'If only the doctor would see me sooner',
+    // TODO 'If only' type
+    source: 'exam',
+  },
+  {
+    phrase: "It wasn't necessary for you to call the police",
+    starts: 'You',
+    rewrite: "You didn't have to call the police",
+    _type: 'modal',
+    source: 'exam',
+  },
+  {
+    phrase: 'It was a bad idea for you to get involved',
+    starts: 'You',
+    rewrite: "You shouldn't have got involved",
+    _type: 'modal',
+    source: 'exam',
+  },
+  {
+    phrase:
+      "Let's call the manager. I have been discussing the issue with her.",
+    starts: "Let's call the manager with",
+    rewrite:
+      "Let's call the manager with whom I have been discussing the issue",
+    _type: 'formal relative',
+    source: 'exam',
+  },
 ];
