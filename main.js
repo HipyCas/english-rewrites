@@ -39,12 +39,42 @@ let last = ''; // Index of the last phrase done
 form.onsubmit = function (event) {
   event.preventDefault(); // Prevent page reload
 
-  // Skip phrase if starts by `#!`
-  // TODO Instead of throwing a new phrase directly, which causes some issues with correction, set the input to the rewrite
-  // ! The problem is that it triggers the next else clause
-  if (rewrite.value.charAt(0) == '#' && rewrite.value.charAt(1) == '!')
-    //newPhrase();
-    rewrite.value = filtered_phrases[index].rewrite;
+  if (rewrite.value.charAt(0) == '#') {
+    // Skip phrase if starts by `#!`
+    if (rewrite.value.charAt(1) == '!')
+      rewrite.value = filtered_phrases[index].rewrite;
+    // Show correct rewrite by prefixing input with `#?`
+    else if (rewrite.value.charAt(1) == '?') {
+      rewrite.value = filtered_phrases[index].rewrite;
+      return;
+    }
+    // Go back to last phrase
+    else if (rewrite.value.charAt(1) == '<') {
+      index = last; // Set index to last, effectively reloading
+      done.pop(); // Remove last phrase in done, as it was not completed
+      // Copied from the `newPhrase` function
+      phrase.innerText = filtered_phrases[index].phrase;
+      rewrite.value =
+        typeof filtered_phrases[index].starts === 'undefined'
+          ? ''
+          : filtered_phrases[index].starts + ' ';
+      help.innerText =
+        typeof filtered_phrases[index]._type === 'undefined'
+          ? '(Phrase ' + done.length + '/' + filtered_phrases.length + ')'
+          : '(Phrase ' +
+            done.length +
+            '/' +
+            filtered_phrases.length +
+            ') ' +
+            filtered_phrases[index]._type
+              .toLowerCase()
+              .replace(
+                filtered_phrases[index]._type.charAt(0),
+                filtered_phrases[index]._type.charAt(0).toUpperCase()
+              );
+      return;
+    }
+  }
 
   // Case phrase (in lowercase) matches
   if (
@@ -109,6 +139,8 @@ function newPhrase() {
             filtered_phrases[index]._type.charAt(0),
             filtered_phrases[index]._type.charAt(0).toUpperCase()
           );
+  if (filtered_phrases[index].source !== undefined)
+    help.innerText += ' [source: ' + filtered_phrases[index].source + ']';
 }
 
 //* Get a text indicating where the error is
