@@ -117,7 +117,7 @@ function newPhrase() {
  */
 function getWhereError() {
   // Loop over the smaller of the rewrites (correct or input) to ensure that there is no index out of bounds exception
-  for (
+  /*for (
     let i = 0;
     i < Math.min(rewrite.value.length, filtered_phrases[index].rewrite.length);
     i++
@@ -130,6 +130,24 @@ function getWhereError() {
     ) {
       return 'First wrong character is letter number ' + i;
     }
+  }*/
+  for (
+    let i = 0;
+    i <
+    Math.min(
+      rewrite.value.replace(/,/g, '').split(' ').length,
+      filtered_phrases[index].rewrite.replace(/,/g, '').split(' ').length
+    );
+    i++
+  ) {
+    if (
+      rewrite.value.replace(/,/g, '').split(' ')[i].toLowerCase() !==
+      filtered_phrases[index].rewrite
+        .replace(/,/g, '')
+        .split(' ')
+        [i].toLowerCase()
+    )
+      return 'First wrong word is number ' + (i + 1);
   }
   // If there is no error, this was definitely called because phrases don't match, so check length as last option
   return rewrite.value.length < filtered_phrases[index].rewrite.length
