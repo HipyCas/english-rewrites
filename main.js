@@ -43,7 +43,8 @@ form.onsubmit = function (event) {
   // TODO Instead of throwing a new phrase directly, which causes some issues with correction, set the input to the rewrite
   // ! The problem is that it triggers the next else clause
   if (rewrite.value.charAt(0) == '#' && rewrite.value.charAt(1) == '!')
-    newPhrase();
+    //newPhrase();
+    rewrite.value = filtered_phrases[index].rewrite;
 
   // Case phrase (in lowercase) matches
   if (
