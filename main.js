@@ -181,7 +181,13 @@ function getWhereError() {
         .split(' ')
         [i].toLowerCase()
     )
-      return 'First wrong word is number ' + (i + 1);
+      return (
+        "First wrong word is '" +
+        rewrite.value.replace(/,/g, '').split(' ')[i] +
+        "' (number " +
+        (i + 1) +
+        ')'
+      );
   }
   // If there is no error, this was definitely called because phrases don't match, so check length as last option
   return rewrite.value.length < filtered_phrases[index].rewrite.length
