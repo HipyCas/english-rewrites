@@ -39,6 +39,7 @@ let last = ''; // Index of the last phrase done
 form.onsubmit = function (event) {
   event.preventDefault(); // Prevent page reload
 
+  // Parse shortcut/command
   if (rewrite.value.charAt(0) == '#') {
     // Skip phrase if starts by `#!`
     if (rewrite.value.charAt(1) == '!')
@@ -89,7 +90,7 @@ form.onsubmit = function (event) {
     // Reset styles to default
     rewrite.style.color = GRAY;
     help.style.color = PURPLE;
-    newPhrase(); // ? What is going on here? How can this be working? Like, shouldn't it be setting the color to void/undefined???
+    newPhrase();
   }
   // Case phrase does not match: Get where the error happened and turn to red
   else {
