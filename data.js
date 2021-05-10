@@ -257,7 +257,7 @@ const phrases = [
   {
     phrase: "What a pity I didn't have time to see you last week",
     starts: 'I wish',
-    rewrite: 'I wish I had had time to see oyu last week',
+    rewrite: 'I wish I had had time to see you last week',
     _type: 'wish',
     source: 'exam',
   },
