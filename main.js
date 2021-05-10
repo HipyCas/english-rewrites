@@ -89,7 +89,7 @@ form.onsubmit = function (event) {
     // Reset styles to default
     rewrite.style.color = GRAY;
     help.style.color = PURPLE;
-    help.style.color = newPhrase(); // ? What is going on here? How can this be working? Like, shouldn't it be setting the color to void/undefined???
+    newPhrase(); // ? What is going on here? How can this be working? Like, shouldn't it be setting the color to void/undefined???
   }
   // Case phrase does not match: Get where the error happened and turn to red
   else {
