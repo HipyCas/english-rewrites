@@ -113,7 +113,7 @@ function newPhrase() {
   // Get a new random index that is not yet done
   do {
     index = Math.floor(Math.random() * filtered_phrases.length);
-  } while (index in done || last == index);
+  } while (done.includes(index) || last == index);
   done.push(index);
 
   // Set the phrase text to the database phrase
