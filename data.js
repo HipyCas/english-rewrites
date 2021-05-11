@@ -240,7 +240,7 @@ const phrases = [
   {
     phrase: 'I am not sure she is her girl friend',
     starts: 'She',
-    rewrite: 'She might not be her girl friend',
+    rewrite: 'She may not be her girl friend',
     _type: 'modal',
     source: 'exam',
   },
