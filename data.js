@@ -226,7 +226,7 @@ const phrases = [
   {
     phrase: 'The engineer has repaired my TV',
     starts: 'I have',
-    rewrite: 'I have got my TV repaired',
+    rewrite: 'I have had my TV repaired',
     _type: 'causative',
     source: 'exam',
   },
