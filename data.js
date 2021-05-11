@@ -112,7 +112,6 @@ const phrases = [
     phrase: 'He made an effort to speak English',
     starts: 'He tried',
     rewrite: 'He tried to speak in English',
-    _type: 'wish',
   },
   {
     phrase: "I love German, unfortunately, I can't speak it fluently",
