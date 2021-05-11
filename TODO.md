@@ -2,7 +2,7 @@
 
 - Expand user input contractions and check against non contracted text
 
-- Accept get/have variations for causative
+- Accept get/have variations for causative: possibly replace get's with have's if type is causative.
 
 - Regex search/filter
 
