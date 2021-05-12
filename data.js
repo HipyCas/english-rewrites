@@ -338,7 +338,7 @@ const phrases = [
   {
     phrase: "It wasn't necessary for you to call the police",
     starts: 'You',
-    rewrite: "You didn't have to call the police",
+    rewrite: "You didn't need to call the police",
     _type: 'modal',
     source: 'exam',
   },
