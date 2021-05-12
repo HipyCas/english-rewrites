@@ -1,7 +1,7 @@
 const phrases = [
   {
     phrase: 'People thought the exam was easy',
-    rewrite: 'The exam was believe to be easy',
+    rewrite: 'The exam was believed to be easy',
     starts: 'The exam',
     _type: 'passive',
   },
