@@ -233,7 +233,7 @@ const phrases = [
   {
     phrase: 'My kitchen is being redecorated at the moment',
     starts: 'I',
-    rewrite: 'I am getting my kitchen redecorated',
+    rewrite: 'I am having my kitchen redecorated',
     _type: 'causative',
     source: 'exam',
   },
