@@ -109,7 +109,7 @@ const phrases = [
     _type: 'question (in France)',
   },
   {
-    phrase: 'He made an effort to speak English',
+    phrase: 'He made an effort to speak in English',
     starts: 'He tried',
     rewrite: 'He tried to speak in English',
   },
