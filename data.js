@@ -261,7 +261,7 @@ const phrases = [
     source: 'exam',
   },
   {
-    phrase: "Sorry I can't speak french",
+    phrase: "Sorry I can't speak French",
     starts: 'I wish',
     rewrite: 'I wish I could speak French',
     _type: 'wish',
