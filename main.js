@@ -222,7 +222,7 @@ function toggleDropdown() {
 
 // Set the dropdown toggle onclick event to the toggle function
 // TODO Instead of this, set the function as an anonymous one directly here, like for the form submit
-// ? Maybe keep it this way? Maybe you will need it to programatically open some day
+// ? Maybe keep it this way? Maybe you will need it to programmatically open some day
 dropdown_toggle.onclick = toggleDropdown;
 
 //* Return the phrases filtered by the type
