@@ -483,7 +483,7 @@ const phrases = [
   {
     phrase: 'We hired someone to declutter our house last summer holidays',
     starts: 'We',
-    rewrite: 'We go our house decluttered last summer holidays',
+    rewrite: 'We had our house decluttered last summer holidays',
     _type: 'causative',
     source: 'selectividad 2020 extraordinaria Galicia',
   },
@@ -501,7 +501,7 @@ const phrases = [
       "My mother loves watching Marie Kondo's TV series. However, she doesn't use her tidying method",
     starts: 'Although',
     rewrite:
-      "Although my mother loves watching Mary Kondo's TV series, she doesn't use her tidying method",
+      "Although my mother loves watching Marie Kondo's TV series, she doesn't use her tidying method",
     _type: 'although', // TODO Add,
     source: 'selectividad 2020 extraordinaria Galicia',
   },
