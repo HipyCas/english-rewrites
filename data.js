@@ -451,4 +451,85 @@ const phrases = [
     _type: 'formal relative',
     source: 'exam',
   },
+  {
+    phrase: 'Sue hurt her back when she lifted a heavy table on her own',
+    starts: 'If only',
+    rewrite: 'If only she Sue had lifted a heavy table on her own',
+    source: 'selectividad 2020 ordinaria Galicia',
+  },
+  {
+    phrase: 'Many people said his ideas were outrageous',
+    starts: 'It',
+    rewrite: 'It was said that his ideas were outrageous',
+    source: 'selectividad 2020 ordinaria Galicia',
+  },
+  {
+    phrase:
+      'I love the signs of the zodiac. My brother loves the signs of the zodiac too',
+    starts: 'Both',
+    rewrite: 'Both my brother and I love the signs of the zodiac',
+    source: 'selectividad 2020 ordinaria Galicia',
+  },
+  // TODO Add phrases from selectividad that have text in end or middle.
+  {
+    phrase:
+      "My friends don't believe in astrology, but they read the horoscope",
+    starts: 'In spite of',
+    rewrite:
+      "In spite of reading the horoscope, my friends don't believe in astrology",
+    source: 'selectividad 2020 ordinaria Galicia',
+    _type: 'in spite of', // TODO Add with Despite
+  },
+  {
+    phrase: 'We hired someone to declutter our house last summer holidays',
+    starts: 'We',
+    rewrite: 'We go our house decluttered last summer holidays',
+    _type: 'causative',
+    source: 'selectividad 2020 extraordinaria Galicia',
+  },
+  {
+    phrase:
+      "William didn't remember to bring reusable bags so he bought plastic bags",
+    starts: 'If William',
+    rewrite:
+      "If William had remembered to bring reusable bags he wouldn't have bought plastic bags",
+    _type: 'conditional',
+    source: 'selectividad 2020 extraordinaria Galicia',
+  },
+  {
+    phrase:
+      "My mother loves watching Marie Kondo's TV series. However, she doesn't use her tidying method",
+    starts: 'Although',
+    rewrite:
+      "Although my mother loves watching Mary Kondo's TV series, she doesn't use her tidying method",
+    _type: 'although', // TODO Add,
+    source: 'selectividad 2020 extraordinaria Galicia',
+  },
+  {
+    phrase:
+      '"Society still sees girls through a gender lens that requires them to be pretty and passive"',
+    starts: 'He said that',
+    rewrite:
+      'He said that society still sees girls through a gender lens that requires them to be pretty and passive',
+    _type: 'reported speech',
+    source: 'selectividad 2020 extraordinaria Galicia',
+  },
+  {
+    phrase:
+      'Parents should let their children play with trucks and dolls and distribute household tasks evenly',
+    starts: 'Not only',
+    rewrite:
+      'Not only should parents let their children play with trucks and dolls, but also distribute household tasks evenly',
+    //_type: 'not only' // TODO Maybe add like "swapped around formal english style"
+    source: 'selectividad 2020 extraordinaria Galicia',
+  },
+  {
+    phrase:
+      "We asked a few people what they would change about women's situation nowadays",
+    starts: 'A few people',
+    rewrite:
+      "A few people were asked what they would change about women's situation nowadays",
+    _type: 'passive',
+    source: 'selectividad 2020 extraordinaria Galicia',
+  },
 ];
