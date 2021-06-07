@@ -66,7 +66,7 @@ const phrases = [
   },
   {
     phrase: 'The director has resigned, we were very fond of him',
-    rewrite: 'The director, of whom we where very fond, has resigned',
+    rewrite: 'The director, of whom we were very fond, has resigned',
     _type: 'formal relative',
   },
   {
@@ -100,7 +100,7 @@ const phrases = [
   {
     phrase: 'This is the place, we last had coffee together here',
     starts: 'This is',
-    rewrite: 'This is the place were we last had coffee together',
+    rewrite: 'This is the place where we last had coffee together',
     _type: 'relative',
   },
   {
@@ -414,7 +414,7 @@ const phrases = [
   },
   {
     phrase: "Vegans do not eat meat and they don't eat cheese",
-    rewrite: "Vegans don't eat either meat nor cheese",
+    rewrite: "Vegans don't eat either meat or cheese",
     _type: 'either',
     source: 'exam',
   },
