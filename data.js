@@ -150,7 +150,7 @@ const phrases = [
   {
     phrase: '"What time do the banks close today?"',
     starts: 'Tim asked me',
-    rewrite: 'Tim asked me when the banks closed today',
+    rewrite: 'Tim asked me when the banks closed that day',
     source: 'exam',
   },
   {
