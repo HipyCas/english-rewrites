@@ -442,7 +442,7 @@ const phrases = [
     starts: 'The',
     rewrite: 'The more money people earn, the more proud they become',
     source: 'exam',
-    //? _type: 'the more'
+    // ? _type: 'the more'
   },
   {
     phrase: 'You are a reliable person. The company can rely on you.',
@@ -520,7 +520,7 @@ const phrases = [
     starts: 'Not only',
     rewrite:
       'Not only should parents let their children play with trucks and dolls, but also distribute household tasks evenly',
-    //_type: 'not only' // TODO Maybe add like "swapped around formal english style"
+    // _type: 'not only' // TODO Maybe add like "swapped around formal english style"
     source: 'selectividad 2020 extraordinaria Galicia',
   },
   {

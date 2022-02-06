@@ -42,8 +42,9 @@ form.onsubmit = function (event) {
   // Parse shortcut/command
   if (rewrite.value.charAt(0) == '#') {
     // Skip phrase if starts by `#!`
-    if (rewrite.value.charAt(1) == '!')
+    if (rewrite.value.charAt(1) == '!') {
       rewrite.value = filtered_phrases[index].rewrite;
+    }
     // Show correct rewrite by prefixing input with `#?`
     else if (rewrite.value.charAt(1) == '?') {
       rewrite.value = filtered_phrases[index].rewrite;
@@ -140,8 +141,9 @@ function newPhrase() {
             filtered_phrases[index]._type.charAt(0),
             filtered_phrases[index]._type.charAt(0).toUpperCase()
           );
-  if (filtered_phrases[index].source !== undefined)
+  if (filtered_phrases[index].source !== undefined) {
     help.innerText += ' [source: ' + filtered_phrases[index].source + ']';
+  }
 }
 
 //* Get a text indicating where the error is
@@ -151,7 +153,7 @@ function newPhrase() {
  */
 function getWhereError() {
   // Loop over the smaller of the rewrites (correct or input) to ensure that there is no index out of bounds exception
-  /*for (
+  /* for (
     let i = 0;
     i < Math.min(rewrite.value.length, filtered_phrases[index].rewrite.length);
     i++
@@ -164,7 +166,7 @@ function getWhereError() {
     ) {
       return 'First wrong character is letter number ' + i;
     }
-  }*/
+  } */
   for (
     let i = 0;
     i <
@@ -180,7 +182,7 @@ function getWhereError() {
         .replace(/,/g, '')
         .split(' ')
         [i].toLowerCase()
-    )
+    ) {
       return (
         "First wrong word is '" +
         rewrite.value.replace(/,/g, '').split(' ')[i] +
@@ -188,6 +190,7 @@ function getWhereError() {
         (i + 1) +
         ')'
       );
+    }
   }
   // If there is no error, this was definitely called because phrases don't match, so check length as last option
   return rewrite.value.length < filtered_phrases[index].rewrite.length
@@ -205,17 +208,17 @@ function toggleDropdown() {
 
     // TODO Change this querySelector to a global property
     // TODO Change query to a more specific one, not just a general style tag
-    let styleElem = document.querySelector('style');
+    const styleElem = document.querySelector('style');
     styleElem.innerHTML = OPENED_DROP_TOGGLE; // Set the
   }
   // Case dropdown is open
   else {
     dropdown.style.display = 'none';
-    //root.style.setProperty("--drop-icon", ARROW_DOWN);
+    // root.style.setProperty("--drop-icon", ARROW_DOWN);
     // TODO See, it is not useful
 
     // TODO Same as above
-    let styleElem = document.querySelector('style');
+    const styleElem = document.querySelector('style');
     styleElem.innerHTML = CLOSED_DROP_TOGGLE;
   }
 }
@@ -239,45 +242,45 @@ function filterPhrasesByType(_type) {
     if (typeof phrases[i]._type === 'undefined') continue; // Skip phrase if it doesn't have a type defined
     if (_type.includes('/')) {
       // If the type is multiple, like As/Unless:
-      let types = _type.split('/'); // Split to check for both
+      const types = _type.split('/'); // Split to check for both
       for (let j = 0; j < types.length; j++) {
         // Loop over the different types specified
         if (
           types[j] === 'as' &&
           phrases[i]._type.toLowerCase().includes('passive')
-        )
+        ) {
           // This ensures that `passive` is not actually registered when setting type to `as`, because `passive` includes an `as` inside its name
           continue;
-        if (phrases[i]._type.toLowerCase().includes(types[j]))
+        }
+        if (phrases[i]._type.toLowerCase().includes(types[j])) {
           // Check if the phrase type includes the type and if it does push it to the return array
           toReturn.push(phrases[i]);
+        }
       }
     }
     let type_includes = false;
     if (phrases[i]._type !== undefined) {
-      type_includes = phrases[i]._type.toLowerCase().includes(_type)
-        ? true
-        : false;
+      type_includes = !!phrases[i]._type.toLowerCase().includes(_type);
     }
     let source_includes = false;
     if (phrases[i].source !== undefined) {
-      source_includes = phrases[i].source.toLowerCase().includes(_type)
-        ? true
-        : false;
+      source_includes = !!phrases[i].source.toLowerCase().includes(_type);
     }
-    if (type_includes || source_includes)
+    if (type_includes || source_includes) {
       // You may wonder why include and not ===, well, `formal relative` should be included when selecting `relative`
       // The source.includes() is used for choosing the source of the phrases, like 'exam'
       // TODO Better implementation of source selection, like 'Source: exam' in the popup, instead of just 'exam'
       toReturn.push(phrases[i]);
+    }
   }
   return toReturn; // Return the new composed array
 }
 
 function selectType() {
   // Deselect all options (in CSS means) before setting others
-  for (let i = 0; i < dropdown_items.length; i++)
+  for (let i = 0; i < dropdown_items.length; i++) {
     dropdown_items[i].setAttribute('selected', 'false');
+  }
   this.setAttribute('selected', 'true');
 
   type = this.innerText.toLowerCase(); // Get the selected name, which is the same as their inner text
